@@ -1,5 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxt/ui']
+  pages: true,
+  modules: [
+    'nuxt-icon',
+    'nuxt-lodash',
+    '@nuxt/ui',
+  ],
+  components: [
+    {
+      path: '~/components',
+      extensions: ['.vue'],
+    }
+  ]
 })
