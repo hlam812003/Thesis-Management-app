@@ -1,7 +1,9 @@
 <template>
     <Body>
         <MainLayout>
-            <Home></Home>
+            <section class="w-full h-[320px]">
+                
+            </section>
         </MainLayout>
     </Body>
 </template>
@@ -10,6 +12,6 @@
 import MainLayout from '~/layouts/MainLayout.vue'; 
 
 useHead({
-    title: 'Trang Chủ',
+    title: 'Giảng Viên',
 })
 </script>

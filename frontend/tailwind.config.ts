@@ -2,25 +2,37 @@ import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>> {
   content: [
-    `~/components/**/*.{vue,js,ts}`,
-    `~/layouts/**/*.vue`,
-    `~/pages/**/*.vue`,
-    `~/composables/**/*.{js,ts}`,
-    `~/plugins/**/*.{js,ts}`,
-    `~/utils/**/*.{js,ts}`,
-    `~/App.{js,ts,vue}`,
-    `~/app.{js,ts,vue}`,
-    `~/Error.{js,ts,vue}`,
-    `~/error.{js,ts,vue}`,
-    `~/app.config.{js,ts}`
+    // `~/composables/**/*.{js,ts}`,
+    // `~/utils/**/*.{js,ts}`,
+    // `~/App.{js,ts,vue}`,
+    // `~/Error.{js,ts,vue}`,
+    "~/components/**/*.{vue,js,ts}",
+    "~/layouts/**/*.vue",
+    "~/pages/**/*.vue",
+    "~/plugins/**/*.{js,ts}",
+    "./app.{js,ts,vue}",
+    "./app.config.{js,ts}",
+    "./error.{js,ts,vue}",
+    "./nuxt.config.{js,ts}"
   ],
   fontFamily: {
-    sans: ['Roboto', 'sans-serif'],
+    sans: ['Roboto', 'Inter', 'Noto Sans', 'Raleway', 'sans-serif'],
+    serif: ['Playfair Display', 'serif'],
   },
   theme: {
     extend: {
-        transitionTimingFunction: {}
+      // transitionTimingFunction: {},
+      keyframes: {
+        bounceSlow: {
+          '0%, 100%': { transform: 'translateY(-10%)' },
+          '50%': { transform: 'translateY(0)' }
+        }
+      },
+      animation: {
+        bounceSlow: 'bounceSlow 3s linear infinite',
+      }
     },
   },
+  variants: {},
   plugins: [],
 }

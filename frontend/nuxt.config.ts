@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import Icons from 'unplugin-icons/vite'
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   pages: true,
@@ -17,7 +19,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/tailwindcss',
     '@vueuse/motion/nuxt',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    "@nuxt/image"
   ],
   components: [
     {
@@ -25,6 +28,14 @@ export default defineNuxtConfig({
       extensions: ['.vue'],
     }
   ],
+  vite: {
+    plugins: [
+      Icons({
+        // the feature below is experimental ⬇️
+        autoInstall: true
+      })
+    ]
+  },
   postcss: {
     plugins: {
       'postcss-import': {},
