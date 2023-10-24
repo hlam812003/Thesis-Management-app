@@ -43,7 +43,12 @@
   "dependencies": {
     "@fontsource/inter": "^5.0.14",
     "@fontsource/roboto": "^5.0.8",
+    "@iconify-json/carbon": "^1.1.21",
+    "@iconify-json/heroicons": "^1.1.13",
+    "@iconify-json/mdi": "^1.1.54",
+    "@iconify-json/ri": "^1.1.12",
     "@pinia/nuxt": "^0.4.11",
+    "@smooth-scrollbar-contrib/vue-test": "^0.0.11",
     "@vueuse/motion": "^2.0.0",
     "nuxt-property-decorator": "^2.9.1",
     "pinia": "^2.1.6",

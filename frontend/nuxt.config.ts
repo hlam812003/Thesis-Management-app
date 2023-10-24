@@ -4,6 +4,12 @@ import Icons from 'unplugin-icons/vite'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   pages: true,
+  // ui: {
+  //   icons: 'all'
+  // },
+  // colorMode: {
+  //   preference: 'light'
+  // },
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: 'tailwind.config',

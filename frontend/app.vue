@@ -13,7 +13,7 @@ useHead({
     {
       rel: 'icon',
       type: 'image/png',
-      // href: '/favicon.png'
+      href: '/logo2.png'
     }
   ],
   titleTemplate: (titleChunk) => {
@@ -35,10 +35,13 @@ useSeoMeta({
   twitterImage: '[twitter:image]',
   twitterCard: 'summary'
 })
+
 </script>
 
 <style>
+
 body.test {
   background: #000000;
 }
+
 </style>

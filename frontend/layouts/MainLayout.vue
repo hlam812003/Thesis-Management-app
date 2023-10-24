@@ -56,8 +56,25 @@
     </div>
 </template>
 
-<script setup>
-const navItems = ref([
+<script lang="ts" setup>
+import { type Ref, ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+interface NavItem {
+    label: string;
+    link: string;
+}
+
+interface NavButton {
+    label: string;
+    link: string;
+    variant: 'outline' | 'solid';
+    ui: {
+        rounded: string;
+    };
+}
+
+const navItems: Ref<NavItem[]> = ref([
     {
         label: 'Trang Chủ', 
         link: '/', 
@@ -76,7 +93,7 @@ const navItems = ref([
     },
 ]);
 
-const navButtons = ref([
+const navButtons: Ref<NavButton[]> = ref([
     {
         label: 'Đăng Nhập',
         link: 'https://example.com',
@@ -93,7 +110,7 @@ const navButtons = ref([
 
 const router = useRouter()
 
-const isActive = (link) => {
+const isActive = (link: string): boolean => {
     return router.currentRoute.value.path === link;
 };
 
