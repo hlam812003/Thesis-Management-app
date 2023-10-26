@@ -44,4 +44,11 @@ body.test {
   background: #000000;
 }
 
+html,
+body,
+#app,
+.container {
+  height: 100%;
+}
+
 </style>

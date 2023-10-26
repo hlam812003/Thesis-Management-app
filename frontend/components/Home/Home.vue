@@ -33,6 +33,9 @@
                 </div>
             </div>
         </section>
+        <section>
+
+        </section>
     </Scrollbar>
 </template>
 
@@ -41,7 +44,7 @@ import { ref, onMounted } from 'vue';
 import { Scrollbar, type ScrollbarOptions } from "@smooth-scrollbar-contrib/vue-test"
 
 const words: string[] = ['luận án', 'đồ án', 'khóa luận', 'luận văn', 'chuyên đề', 'báo cáo', 'tiểu luận'];
-const currentWord = ref<string>('luận án');
+const currentWord = ref<string>('');
 let wordIndex: number = 0;
 let charIndex: number = 0;
 
@@ -70,11 +73,11 @@ onMounted(() => {
     typeWord();
 });
 
-const scrollbarRef = ref<InstanceType<typeof Scrollbar> | null>(null)
+const scrollbarRef = ref<InstanceType<typeof Scrollbar> | null>(null);
 
 const scrollbarOptions: ScrollbarOptions = {
-  delegateTo: typeof document !== 'undefined' ? document : null,
-  damping: 0.2
+    delegateTo: typeof document !== 'undefined' ? document : null,
+    damping: 0.5
 }
 
 const onScrollbarMounted = (): void => {

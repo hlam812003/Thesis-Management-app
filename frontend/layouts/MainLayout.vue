@@ -1,5 +1,8 @@
 <template>
     <div id="MainLayout" class="">
+        <!-- <div v-show="isLoading" class="fixed inset-0 z-[9999]">
+            <Preloader />
+        </div>         -->
         <Navbar>
             <NuxtLink 
                 to="/" 
@@ -57,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { type Ref, ref } from 'vue';
+import { type Ref, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
 interface NavItem {
@@ -113,6 +116,19 @@ const router = useRouter()
 const isActive = (link: string): boolean => {
     return router.currentRoute.value.path === link;
 };
+
+const isLoading = ref(true);
+
+watch(router.currentRoute, (newRoute, oldRoute) => {
+    if (newRoute !== oldRoute) {
+        isLoading.value = true;
+    }
+});
+
+setTimeout(() => {
+    isLoading.value = false;
+}, 2000);
+
 
 </script>
 
