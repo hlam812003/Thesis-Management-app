@@ -18,23 +18,29 @@
                     :delay="1600"
                     class="font-['Playfair_Display'] mt-[12px] text-[1.25rem] font-normal text-[rgba(255,255,255,0.65)]">Nơi quản lý và theo dõi tiến trình của các <span class="text-[rgb(0,220,130)] font-bold">{{ currentWord }}<span class="cursor-effect"></span></span> tốt nghiệp.</p>
                 <div class="flex justify-center mt-[2.5rem]">
-                    <UButton
+                    <div 
                         v-motion
                         :initial="{ opacity: 0, y: 100 }"
                         :enter="{ opacity: 1, y: 0, scale: 1 }"
-                        :delay="1800" 
-                        class="font-['Roboto'] transition-all ease-out duration-300 font-semibold"
-                        icon="i-heroicons-play"
-                        size="xl"
-                        variant="solid"
-                        :ui="{ rounded: 'rounded-full' }">
-                        Khám Phá
-                    </UButton>
+                        :delay="1800">
+                        <UButton
+                            class="font-['Roboto'] transition-all ease-out duration-300 font-semibold"
+                            icon="i-heroicons-play"
+                            size="xl"
+                            variant="solid"
+                            :ui="{ rounded: 'rounded-full' }"
+                            to="#HomeDesc">
+                            Khám Phá
+                        </UButton>
+                    </div>                
                 </div>
             </div>
         </section>
-        <section>
-
+        <section id="HomeDesc" class="w-full h-[590px] flex items-center justify-between px-56 py-56 relative">
+            <div class="w-[50%] flex flex-initial items-start flex-col font-['Raleway']">
+                <h2 class="text-[1.7rem] font-bold desc__content mb-3"><span class="text-[3.25rem] text-[rgb(0,220,130)] relative">Cisco</span><span class="underline__effect"></span> là gì?</h2>
+                <p class="desc__content font-medium leading-[30px]">Ứng dụng quản lý đề tài, đồ án, và dự án tốt nghiệp được thiết kế đặc biệt cho sinh viên. Với giao diện thân thiện, ứng dụng giúp sinh viên nắm bắt, theo dõi và quản lý tiến trình nghiên cứu và thực hiện dự án một cách rõ ràng và hiệu quả.</p>
+            </div>
         </section>
     </Scrollbar>
 </template>
@@ -43,7 +49,7 @@
 import { ref, onMounted } from 'vue';
 import { Scrollbar, type ScrollbarOptions } from "@smooth-scrollbar-contrib/vue-test"
 
-const words: string[] = ['luận án', 'đồ án', 'khóa luận', 'luận văn', 'chuyên đề', 'báo cáo', 'tiểu luận'];
+const words: string[] = ['luận án', 'đồ án', 'khóa luận', 'luận văn', 'chuyên đề', 'đề tài', 'báo cáo', 'tiểu luận'];
 const currentWord = ref<string>('');
 let wordIndex: number = 0;
 let charIndex: number = 0;
@@ -77,7 +83,7 @@ const scrollbarRef = ref<InstanceType<typeof Scrollbar> | null>(null);
 
 const scrollbarOptions: ScrollbarOptions = {
     delegateTo: typeof document !== 'undefined' ? document : null,
-    damping: 0.5
+    damping: 0.05
 }
 
 const onScrollbarMounted = (): void => {
@@ -86,7 +92,7 @@ const onScrollbarMounted = (): void => {
 
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 #HomeHeader::before {
     content: "";
     position: absolute;
@@ -120,6 +126,19 @@ const onScrollbarMounted = (): void => {
     margin-left: .05rem;
     background-color: rgb(0,220,130);
     animation: blink 1s infinite;
+}
+
+h2 {
+    @apply relative transition ease duration-[250ms];
+}
+
+h2:hover .underline__effect {
+    width: 30%;
+}
+
+.underline__effect {
+    @apply absolute bottom-[4.5px] left-0 h-[4px] bg-[rgb(0,220,130)] transition-all ease-out duration-300;
+    width: 0;
 }
 
 @keyframes shakeBefore {

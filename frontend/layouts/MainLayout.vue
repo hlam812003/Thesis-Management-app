@@ -129,7 +129,6 @@ setTimeout(() => {
     isLoading.value = false;
 }, 2000);
 
-
 </script>
 
 <style scoped lang="postcss">
