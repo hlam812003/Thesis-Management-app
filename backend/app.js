@@ -14,10 +14,12 @@ db.once('open', function () {
   console.log('Connected to MongoDB');
 });
 
+// add uninversity routes to call api
+const universityRoutes = require('./routes/university');
+app.use('/university',universityRoutes);
 
-const universityRouter = require('./routes/university');
-app.use('/', universityRouter);
-
-
+// add admin routes to call api
+const adminRoutes=require('./routes/admin');
+app.use('/admin',adminRoutes);
 
 module.exports = app;
