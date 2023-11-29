@@ -15,6 +15,10 @@ const props = withDefaults(defineProps<Props>(), {
   text: 'Default',
 });
 
+// defineProps<{ 
+//   text?: string; 
+// }>()
+
 </script>
 
 <style scoped>

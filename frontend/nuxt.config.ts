@@ -4,6 +4,9 @@ import Icons from 'unplugin-icons/vite'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   pages: true,
+  image: {
+    provider: "ipx"
+  },
   // ui: {
   //   icons: 'all'
   // },

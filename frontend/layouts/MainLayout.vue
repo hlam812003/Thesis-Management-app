@@ -131,7 +131,7 @@ setTimeout(() => {
 
 </script>
 
-<style scoped lang="postcss">
+<style scoped>
 
 .menu__item,
 .menu__item.active {
