@@ -36,10 +36,13 @@
                 </div>
             </div>
         </section>
-        <section id="HomeDesc" class="w-full h-[590px] flex items-center justify-between px-56 py-56 relative">
-            <div class="w-[50%] flex flex-initial items-start flex-col font-['Raleway']">
+        <section id="HomeDesc" class="w-full h-[590px] flex items-center justify-between px-44 py-56 relative gap-20">
+            <div class="w-[45%] flex flex-initial items-start flex-col font-['Raleway']">
                 <h2 class="text-[1.7rem] font-bold desc__content mb-3"><span class="text-[3.25rem] text-[rgb(0,220,130)] relative">Cisco</span><span class="underline__effect"></span> là gì?</h2>
                 <p class="desc__content font-medium leading-[30px]">Ứng dụng quản lý đề tài, đồ án, và dự án tốt nghiệp được thiết kế đặc biệt cho sinh viên. Với giao diện thân thiện, ứng dụng giúp sinh viên nắm bắt, theo dõi và quản lý tiến trình nghiên cứu và thực hiện dự án một cách rõ ràng và hiệu quả.</p>
+            </div>
+            <div class="w-[55%] flex justify-end">
+                <NuxtImg src="/photo.jpg" alt="" class="w-[30rem] h-[20rem] rounded-[1.6rem]"/>
             </div>
         </section>
     </Scrollbar>
@@ -92,7 +95,7 @@ const onScrollbarMounted = (): void => {
 
 </script>
 
-<style scoped lang="postcss">
+<style scoped>
 #HomeHeader::before {
     content: "";
     position: absolute;
