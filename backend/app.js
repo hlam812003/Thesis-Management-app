@@ -22,4 +22,8 @@ app.use('/university',universityRoutes);
 const adminRoutes=require('./routes/admin');
 app.use('/admin',adminRoutes);
 
+// add external routes to call api
+const external_loginRoutes=require('./routes/external');
+app.use('/external',external_loginRoutes);
+
 module.exports = app;
