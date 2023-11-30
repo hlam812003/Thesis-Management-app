@@ -26,4 +26,16 @@ app.use('/admin',adminRoutes);
 const external_loginRoutes=require('./routes/external');
 app.use('/external',external_loginRoutes);
 
+// add thesis routes to call api
+const thesisRoutes=require('./routes/thesis');
+app.use('/thesis',thesisRoutes);
+
+// add professor routes to call api
+const professorRoutes=require('./routes/professor');
+app.use('/professor',professorRoutes);
+
+// add student routes to call api
+const studentRoutes=require('./routes/student');
+app.use('/student',studentRoutes);
+
 module.exports = app;

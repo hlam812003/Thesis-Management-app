@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 
-
-
-const fileSchema = mongoose.Schema({
+const notificationSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    file_data: Buffer, // to store pdf file
-    file_name: String, // pdf name file
-    created_time : Date,
-    thesis: {type: mongoose.Schema.Types.ObjectId, ref:'Thesis'},
+    creator_external:{ type: mongoose.Schema.Types.ObjectId, ref:'External'},    // can be external or student
+    creator_user: { type: mongoose.Schema.Types.ObjectId, ref:'User' },     
+    receiver_external : { type: mongoose.Schema.Types.ObjectId, ref:'External'},
+    receiver_user : { type: mongoose.Schema.Types.ObjectId, ref:'User' }, 
+    text: String,
+    ccreated_time: Date
+});
 
-})
-
-module.exports = mongoose.model('FileThesis', fileSchema,'file_thesis');
+module.exports = mongoose.model('Notification', notificationSchema);
