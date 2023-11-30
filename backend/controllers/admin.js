@@ -45,7 +45,6 @@ exports.is_admin2= (req,res,next) => {
     })
 }
 
- 
 exports.get_externals=(req,res,next) => {
     var perPage = 6
     var page = req.query.page || 1  
@@ -80,7 +79,6 @@ exports.get_externals=(req,res,next) => {
             });
             });
         };
-
 
 exports.get_not_active_externals=(req,res,next) => {
     var perPage = 6
@@ -189,8 +187,8 @@ exports.get_users=(req,res,next) => {
         count=result
         User.find()
         .populate('university')
-        .select("email role university name lastname")
-        .skip((perPage * page) - perPage)
+        .select("email role university name lastname") // chọn các trường cần lấy
+        .skip((perPage * page) - perPage) // thực hiện phân trang 
         .limit(perPage)
         .exec()
         .then(docs => { 
@@ -290,8 +288,6 @@ exports.update_external = (req, res, next) => {
     })
 }
 
-
-
 exports.application_period= (req,res,next) => {
     const update_object= {application_period_start: req.body.application_period_start,
                          application_period_end: req.body.application_period_end}
@@ -324,8 +320,6 @@ exports.application_period= (req,res,next) => {
 
 }
  
-
-
 exports.create_university= (req,res,next) => {
     
     var university= new University({
@@ -350,7 +344,6 @@ exports.create_university= (req,res,next) => {
     })
 }
 
- 
 exports.delete_university = (req, res, next) => {
     University.findByIdAndDelete({ _id: req.params.universityId })
     .exec()
