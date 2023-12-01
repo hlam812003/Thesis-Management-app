@@ -99,13 +99,13 @@ const navItems: Ref<NavItem[]> = ref([
 const navButtons: Ref<NavButton[]> = ref([
     {
         label: 'Đăng Nhập',
-        link: 'https://example.com',
+        link: '/login',
         variant: 'outline',
         ui: { rounded: 'rounded-full' }
     },
     {
         label: 'Đăng Ký',
-        link: 'https://example.com',
+        link: '/signup',
         variant: 'solid',
         ui: { rounded: 'rounded-full' }
     }

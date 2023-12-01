@@ -42,7 +42,7 @@
                 <p class="desc__content font-medium leading-[30px]">Ứng dụng quản lý đề tài, đồ án, và dự án tốt nghiệp được thiết kế đặc biệt cho sinh viên. Với giao diện thân thiện, ứng dụng giúp sinh viên nắm bắt, theo dõi và quản lý tiến trình nghiên cứu và thực hiện dự án một cách rõ ràng và hiệu quả.</p>
             </div>
             <div class="w-[55%] flex justify-end">
-                <NuxtImg src="/photo.jpg" alt="" class="w-[30rem] h-[20rem] rounded-[1.6rem]"/>
+                <NuxtImg src="/photo.jpg" alt="" class="w-[32rem] h-[22rem] rounded-[1.5rem] transition-all hover:scale-[1.03]"/>
             </div>
         </section>
     </Scrollbar>
