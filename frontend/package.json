@@ -58,6 +58,7 @@
     "three": "^0.157.0",
     "vue-simple-scrollbar": "^0.1.8",
     "vue-smoothie": "^1.2.0",
-    "vue-spline": "^0.0.4"
+    "vue-spline": "^0.0.4",
+    "zod": "^3.22.4"
   }
 }

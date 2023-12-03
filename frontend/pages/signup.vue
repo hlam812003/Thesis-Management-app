@@ -7,18 +7,18 @@
             :enter="{ opacity: 1, scale: 1 }"
             :delay="10"
             >
-                <NuxtImg src="/photo3.jpg" class="w-full h-full border-r-[.2rem] border-r-[white]"/>
+                <NuxtImg src="/photo3.jpg" class="w-full h-full"/>
             </div>
-            <div class="w-[62%] h-screen p-10 bg-[#1C1C1E]">
+            <div class="w-[62%] h-screen p-10 bg-[#000000]">
                 <div class="w-full flex items-center justify-between"
                 v-motion
                 :initial="{ opacity: 0 }"
                 :enter="{ opacity: 1, scale: 1 }"
                 :delay="100"
                 >
-                    <ULink to="/login" class="flex items-center gap-1">
+                    <ULink to="login" class="flex items-center gap-1">
                         <UIcon name="i-heroicons-chevron-left" class="text-[1.4rem]"/>
-                        <p class="font-[Roboto] text-[1rem] font-light capitalize">quay về đăng kí</p>
+                        <p class="font-[Roboto] text-[1rem] font-light capitalize">quay về đăng nhập</p>
                     </ULink>
                 </div>
                 <div class="w-full h-full flex items-center justify-center"
@@ -65,7 +65,8 @@
                                     size="xl"
                                     variant="solid"
                                     :ui="{ rounded: 'rounded-full' }"
-                                    to="/login">
+                                    to="login">
+
                                     <span class="font-['Roboto'] uppercase text-[.9rem] font-bold">đăng ký</span>
                                 </UButton>
                             </div>
@@ -77,19 +78,26 @@
     </Body>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue';
 
-const passwordVisibility = reactive({
+useHead({
+    title: 'Đăng Ký',
+});
+
+type PasswordVisibilityFields = 'password' | 'confirmPassword';
+
+const passwordVisibility = reactive<Record<PasswordVisibilityFields, boolean>>({
   password: false,
   confirmPassword: false
 });
 
-function togglePasswordVisibility(field) {
+const togglePasswordVisibility = (field: PasswordVisibilityFields): void => {
   passwordVisibility[field] = !passwordVisibility[field];
-}
+};
 
-useHead({
-    title: 'Đăng Ký',
-})
 </script>
+
+<style scoped>
+
+</style>
