@@ -25,7 +25,7 @@
                         <h2 class="text-[1.5rem] font-bold font-[Roboto] uppercase mb-[1.1rem] mt-[-.6rem]">Chào mừng đã quay trở lại</h2>
                         <p class="text-[1rem] font-[Roboto] font-light uppercase mb-[2rem]">đăng nhập để tiếp tục</p>
                         <div class="w-full flex items-center justify-center relative mb-[2rem]">
-                            <button class="login__google--btn" @click="toast.add({ title: 'Tính năng đang được phát triển' })">
+                            <button class="login__google--btn" @click="toast.add({ icon: 'i-heroicons-exclamation-circle-20-solid', title: 'Chức năng đang được phát triển', timeout: 2500, color: 'yellow' })">
                                 <Icon icon="devicon:google"/>
                                 <span class="font-[Roboto] font-medium text-[.9rem] transition-all">Đăng nhập với Google</span>
                             </button>
