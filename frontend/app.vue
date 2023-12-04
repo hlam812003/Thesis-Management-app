@@ -43,7 +43,7 @@ useSeoMeta({
 <style>
 
 body.test {
-  background: #000000;
+  background: #0F0F0F;
 }
 
 html,

@@ -7,6 +7,9 @@ export default defineNuxtConfig({
   image: {
     provider: "ipx"
   },
+  plugins: [
+    '~/plugins/aos.client.ts'
+  ],
   // ui: {
   //   icons: 'all'
   // },

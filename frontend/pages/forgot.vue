@@ -1,7 +1,7 @@
 <template>
     <Body>
         <section class="w-full h-screen flex items-center overflow-hidden">
-            <div class="test w-[62%] h-screen p-10 bg-[#000000]">
+            <div class="test w-[62%] h-screen p-10">
                 <div 
                 class="w-full flex items-center justify-between"
                 v-motion

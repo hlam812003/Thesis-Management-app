@@ -15,7 +15,7 @@
                 :initial="{ opacity: 0, y: 80 }"
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
                 :delay="1600"
-                class="font-['Playfair_Display'] mt-[12px] text-[1.25rem] font-normal text-[rgba(255,255,255,0.65)]">Nơi quản lý và theo dõi tiến trình của các <span class="text-[rgb(0,220,130)] font-bold">{{ currentWord }}<span class="cursor-effect"></span></span> tốt nghiệp.</p>
+                class="font-['Playfair_Display'] mt-[12px] text-[1.25rem] font-normal text-[rgba(255,255,255,0.65)]">Nơi quản lý và theo dõi tiến trình của các <span class="text-[rgb(0,220,130)] font-bold">{{ currentWord }}<span class="cursor__effect"></span></span> tốt nghiệp.</p>
             <div class="flex justify-center mt-[2.5rem]">
                 <div 
                     v-motion
@@ -23,26 +23,48 @@
                     :enter="{ opacity: 1, y: 0, scale: 1 }"
                     :delay="1800">
                     <UButton
-                        class="font-['Roboto'] transition-all ease-out duration-300 font-semibold"
-                        icon="i-heroicons-play"
+                        class="font-['Roboto'] transition-all ease-out duration-300 font-semibold capitalize"
+                        icon="i-heroicons-rocket-launch"
                         size="xl"
                         variant="solid"
                         :ui="{ rounded: 'rounded-full' }"
                         to="#HomeDesc">
-                        Khám Phá
+                        khám phá
                     </UButton>
                 </div>                
             </div>
         </div>
     </section>
-    <section id="HomeDesc" class="w-full h-[590px] flex items-center justify-between px-44 py-56 relative gap-20">
+    <section id="HomeDesc" class="w-full h-[590px] flex items-center justify-between px-44 py-56 gap-20 relative">
         <div class="w-[45%] flex flex-initial items-start flex-col font-['Raleway']">
-            <h2 class="text-[1.7rem] font-bold desc__content mb-3"><span class="text-[3.25rem] text-[rgb(0,220,130)] relative">Cisco</span><span class="underline__effect"></span> là gì?</h2>
-            <p class="desc__content font-medium leading-[30px]">Ứng dụng quản lý đề tài, đồ án, và dự án tốt nghiệp được thiết kế đặc biệt cho sinh viên. Với giao diện thân thiện, ứng dụng giúp sinh viên nắm bắt, theo dõi và quản lý tiến trình nghiên cứu và thực hiện dự án một cách rõ ràng và hiệu quả.</p>
+            <h2 class="text-[1.7rem] font-bold desc__content mb-3"
+            data-aos="fade-right" 
+            data-aos-duration="500"
+            data-aos-easing="ease">
+            <span class="text-[3.25rem] text-[rgb(0,220,130)] relative">Cisco</span><span class="underline__effect"></span> là gì?</h2>
+            <p class="desc__content font-medium leading-[30px]"
+            data-aos="fade-right" 
+            data-aos-duration="500"
+            data-aos-easing="ease">
+            Ứng dụng quản lý đề tài, đồ án, và dự án tốt nghiệp được thiết kế đặc biệt cho sinh viên. Với giao diện thân thiện, ứng dụng giúp sinh viên nắm bắt, theo dõi và quản lý tiến trình nghiên cứu và thực hiện dự án một cách rõ ràng và hiệu quả.</p>
         </div>
-        <div class="w-[55%] flex justify-end">
-            <NuxtImg src="/photo.jpg" alt="" class="w-[32rem] h-[22rem] rounded-[1.5rem] transition-all hover:scale-[1.03]"/>
+        <div class="w-[55%] flex justify-end"
+            data-aos="fade-left" 
+            data-aos-duration="500"
+            data-aos-easing="ease">
+            <NuxtImg src="/photo.jpg" alt="" class="w-[32rem] h-[22rem] rounded-[1.5rem] transition-all hover:scale-[1.03]" />
         </div>
+    </section>
+    <section id="HomeAbout" class="w-full h-[820px] px-44 py-24 relative">
+        <h2 class="text-[1.7rem] font-['Raleway'] font-bold desc__content text-center mb-7"
+        data-aos="fade-up" 
+        data-aos-anchor-placement="center-center"
+        data-aos-duration="500"
+        data-aos-easing="ease">
+            Đến với 
+            <span class="text-[3.25rem] text-[rgb(0,220,130)] relative">Cisco,</span> bạn sẽ được biết thêm về...
+        </h2>
+        <HomeCard />
     </section>
 </template>
 
@@ -106,7 +128,8 @@ onNuxtReady(() => {
     background-position: 140% 120%;
     animation: shakeAfter 5s infinite;
 }
-.cursor-effect {
+
+.cursor__effect {
     display: inline-block;
     width: .1rem;
     height: 1.25rem;
@@ -124,7 +147,6 @@ h2 {
 h2:hover .underline__effect {
     width: 30%;
 }
-
 .underline__effect {
     @apply absolute bottom-[4.5px] left-0 h-[4px] bg-[rgb(0,220,130)] transition-all ease-out duration-300;
     width: 0;
