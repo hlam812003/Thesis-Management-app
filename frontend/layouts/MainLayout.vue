@@ -1,5 +1,5 @@
 <template>
-    <div id="MainLayout" class="">
+    <div id="MainLayout">
         <!-- <div v-show="isLoading" class="fixed inset-0 z-[9999]">
             <Preloader />
         </div>         -->
@@ -59,14 +59,14 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { type Ref, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
 interface NavItem {
     label: string;
     link: string;
-}
+};
 
 interface NavButton {
     label: string;
@@ -75,7 +75,7 @@ interface NavButton {
     ui: {
         rounded: string;
     };
-}
+};
 
 const navItems: Ref<NavItem[]> = ref([
     {
@@ -111,7 +111,7 @@ const navButtons: Ref<NavButton[]> = ref([
     }
 ]);
 
-const router = useRouter()
+const router = useRouter();
 
 const isActive = (link: string): boolean => {
     return router.currentRoute.value.path === link;

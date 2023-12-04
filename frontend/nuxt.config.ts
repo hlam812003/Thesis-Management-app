@@ -45,6 +45,9 @@ export default defineNuxtConfig({
       })
     ]
   },
+  build: {
+    transpile: ['gsap'],
+  },
   postcss: {
     plugins: {
       'postcss-import': {},
