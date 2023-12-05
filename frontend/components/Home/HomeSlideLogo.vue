@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, type Ref } from 'vue';
 
 interface LogoItem {
   id?: number;
@@ -79,15 +79,15 @@ const addAnimation = (): void => {
   );
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
 }
-
-.scroller[data-animated="true"]:hover {
-  animation-play-state: paused;
-}
   
 .scroller[data-animated="true"] .scroller__inner {
   width: max-content;
   flex-wrap: nowrap;
   animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-animated="true"]:hover .scroller__inner {
+  animation-play-state: paused;
 }
   
 .scroller[data-direction="right"] {
