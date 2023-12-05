@@ -1,5 +1,5 @@
 <template>
-    <section id="HomeHeader" class="w-full h-[590px] flex items-center justify-center relative">
+    <section id="HomeHeader" class="w-full h-[590px] flex items-center justify-center relative mb-28">
         <div class="text-center">
             <h1 
                 v-motion
@@ -35,6 +35,13 @@
             </div>
         </div>
     </section>
+    <section id="HomeBrand" class="w-full h-[260px] flex justify-center items-center flex-col mb-8">
+        <h2 data-aos="zoom-in"             
+            data-aos-duration="500"
+            data-aos-easing="ease" 
+            class="text-[1.4rem] font-['Raleway'] font-bold desc__content text-center mb-7">Được <span class="text-[rgb(0,220,130)]">tin dùng</span> và <span class="text-[rgb(0,220,130)]">tài trợ</span> bởi</h2>
+        <HomeSlideLogo />
+    </section>
     <section id="HomeDesc" class="w-full h-[590px] flex items-center justify-between px-44 py-56 gap-20 relative">
         <div class="w-[45%] flex flex-initial items-start flex-col font-['Raleway']">
             <h2 class="text-[1.7rem] font-bold desc__content mb-3"
@@ -52,7 +59,7 @@
             data-aos="fade-left" 
             data-aos-duration="500"
             data-aos-easing="ease">
-            <NuxtImg src="/photo.jpg" alt="" class="w-[32rem] h-[22rem] rounded-[1.5rem] transition-all hover:scale-[1.03]" />
+            <NuxtImg src="/photo.jpg" alt="" class="w-[32rem] h-[22rem] rounded-[1.5rem]" />
         </div>
     </section>
     <section id="HomeAbout" class="w-full h-[820px] px-44 py-24 relative">
