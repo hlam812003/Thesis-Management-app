@@ -11,3 +11,5 @@ const adminUsers = [
 const user = adminUsers[0];
 const token = jwt.sign({ userId: user._id }, 'secret', { expiresIn: '1h' });
 console.log('Generated Token:', token);
+
+
