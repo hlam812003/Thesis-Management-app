@@ -1,6 +1,8 @@
 <template>
   <div>
     <NuxtPage />
+
+    <UNotifications />
   </div>
 </template>
 
@@ -34,14 +36,14 @@ useSeoMeta({
   twitterDescription: '[twitter:description]',
   twitterImage: '[twitter:image]',
   twitterCard: 'summary'
-})
+});
 
 </script>
 
 <style>
 
 body.test {
-  background: #000000;
+  background: #0F0F0F;
 }
 
 html,
@@ -49,6 +51,22 @@ body,
 #app,
 .container {
   height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(63, 63, 63);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 220, 128, 0.6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(0, 220, 128);
 }
 
 </style>
