@@ -81,17 +81,19 @@
 import { ref, reactive } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useRouter } from 'vue-router';
-import authService from '~/services/authService';
-
-const router = useRouter();
-
-const formState = reactive({
-    email: '',
-    password: '',
-});
+import authService from '~/services/AuthService';
+import { useUserStore } from '~/stores/User';
 
 useHead({
     title: 'Đăng Nhập',
+});
+
+const userStore = useUserStore();
+const router = useRouter();
+
+const formState = reactive({
+  email: '',
+  password: '',
 });
 
 const isPasswordVisible = ref(false);
@@ -113,11 +115,8 @@ async function onFormSubmit() {
         });
     } else {
         try {
-            const res = await authService.login({
-                email: formState.email,
-                password: formState.password
-            });
-            localStorage.setItem('token', res.data.token); // Lưu token vào localStorage
+            const res = await authService.login(formState);
+            userStore.setUser({ name: res.userName });
             router.push('/');
         } catch (err) {
             toast.add({
@@ -142,4 +141,4 @@ async function onFormSubmit() {
     }
 }
 
-</style>
+</style>~/services/AuthService

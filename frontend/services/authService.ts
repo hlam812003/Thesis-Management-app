@@ -9,7 +9,8 @@ interface LoginData {
 
 const login = async (loginData: LoginData) => {
   try {
-    const res = await axios.post(`${API_URL}/user/login`, loginData);
+    const res = await axios.post(`${API_URL}/external/login`, loginData);
+    localStorage.setItem('token', res.data.token);
     return res.data;
   } catch (err) {
     throw err;

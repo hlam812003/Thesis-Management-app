@@ -6,21 +6,18 @@ interface UserInfo {
 }
 
 export const useUserStore = defineStore('user', {
-    state: () => {
-        return {
-            userInfo: null as UserInfo | null,
-            userList: [] as UserInfo,
-            isLoggedIn: false
-        }
-    },
+    state: () => ({
+      userInfo: null as UserInfo | null,
+      isLoggedIn: false
+    }),
     actions: {
-        setUser(userInfo: UserInfo) {
-            this.userInfo = userInfo;
-            this.isLoggedIn = true;
-        },
-        clearUser() {
-            this.userInfo = null;
-            this.isLoggedIn = false;
-        }
+      setUser(userInfo: UserInfo) {
+        this.userInfo = userInfo;
+        this.isLoggedIn = true;
+      },
+      clearUser() {
+        this.userInfo = null;
+        this.isLoggedIn = false;
+      }
     }
 });

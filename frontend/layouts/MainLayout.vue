@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div v-else>
-                        <span>{{ userName }}</span>
+                        <span>{{ userInfo?.name }}</span>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
 <script setup lang="ts">
 import { type Ref, ref, watch, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { useUserStore } from '~/stores/user';
+import { useUserStore } from '~/stores/User';
 
 interface NavItem {
     label: string;
@@ -86,7 +86,7 @@ interface NavButton {
 
 const userStore = useUserStore();
 const isLoggedIn = computed(() => userStore.isLoggedIn);
-const userName = computed(() => userStore.userInfo?.name || '');
+const userInfo = computed(() => userStore.userInfo);
 
 const navItems: Ref<NavItem[]> = ref([
     {
@@ -167,4 +167,4 @@ setTimeout(() => {
     @apply text-[24px] font-semibold;
 }
 
-</style>
+</style>~/stores/User
