@@ -30,23 +30,29 @@
                         <span class="underline"></span>
                     </li>
                 </ul>
-                <div class="flex items-center gap-[.8rem]">
-                    <div   
-                        v-for="(button, index) in navButtons" 
-                        :key="button.label"
-                        v-motion
-                        :initial="{ opacity: 0 }"
-                        :enter="{ opacity: 1, scale: 1 }"
-                        :delay="250 + (navItems.length + index + 4.5) * 100">
-                        <UButton 
-                            class="transition-all ease-out duration-300"
-                            :to="button.link"
-                            size="md"
-                            :variant="button.variant"
-                            :ui="button.ui"
+                <div>
+                    <div v-if="!isLoggedIn" class="flex items-center gap-[.8rem]">
+                        <div
+                            v-for="(button, index) in navButtons" 
+                            :key="button.label"
+                            v-motion
+                            :initial="{ opacity: 0 }"
+                            :enter="{ opacity: 1, scale: 1 }"
+                            :delay="250 + (navItems.length + index + 4.5) * 100"
                             >
-                            {{ button.label }}
-                        </UButton>
+                            
+                            <UButton 
+                                class="transition-all ease-out duration-300"
+                                :to="button.link"
+                                size="md"
+                                :variant="button.variant"
+                                :ui="button.ui">
+                                {{ button.label }}
+                            </UButton>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <span>{{ userName }}</span>
                     </div>
                 </div>
             </div>
@@ -60,8 +66,9 @@
 </template>
 
 <script setup lang="ts">
-import { type Ref, ref, watch } from 'vue';
+import { type Ref, ref, watch, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '~/stores/user';
 
 interface NavItem {
     label: string;
@@ -76,6 +83,10 @@ interface NavButton {
         rounded: string;
     };
 };
+
+const userStore = useUserStore();
+const isLoggedIn = computed(() => userStore.isLoggedIn);
+const userName = computed(() => userStore.userInfo?.name || '');
 
 const navItems: Ref<NavItem[]> = ref([
     {

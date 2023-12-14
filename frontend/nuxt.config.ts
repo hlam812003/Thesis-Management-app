@@ -29,10 +29,10 @@ export default defineNuxtConfig({
     'nuxt-icon',
     'nuxt-lodash',
     '@nuxt/ui',
+    '@nuxt/image',
     '@nuxtjs/tailwindcss',
     '@vueuse/motion/nuxt',
-    '@pinia/nuxt',
-    "@nuxt/image"
+    ['@pinia/nuxt', { disableVuex: false }],
   ],
   components: [
     {
