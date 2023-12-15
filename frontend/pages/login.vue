@@ -73,6 +73,12 @@
             >
               <NuxtImg src="/photo2.jpg" class="w-full h-full" />
             </div>
+
+            
+                        <div>
+                          <button @click="callAdminApi">Call Admin API</button>
+                        </div>
+
         </section>
     </Body>
 </template>
@@ -81,7 +87,7 @@
 import { ref, reactive } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useRouter } from 'vue-router';
-import authService from '~/services/AuthService';
+import authService from '~/services/authService';
 import { useUserStore } from '~/stores/User';
 
 useHead({
