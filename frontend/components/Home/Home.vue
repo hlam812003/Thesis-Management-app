@@ -35,7 +35,7 @@
             </div>
         </div>
     </section>
-    <section id="HomeBrand" class="w-full h-[260px] flex justify-center items-center flex-col mb-8">
+    <section id="HomeBrand" class="w-full h-[260px] flex justify-center items-center flex-col mb-6">
         <h2 data-aos="zoom-in"             
             data-aos-duration="500"
             data-aos-easing="ease" 

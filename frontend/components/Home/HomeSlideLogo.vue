@@ -53,11 +53,11 @@ const addAnimation = (): void => {
 
 <style scoped>
 .scroller {
-  max-width: 1380px;
+  max-width: 1460px;
 }
 
 .logo__item {
-  height: 10rem;
+  height: 8rem;
   object-fit: cover;
 }
   

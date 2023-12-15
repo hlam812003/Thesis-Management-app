@@ -38,11 +38,11 @@
                         <UForm class="w-full h-full flex items-center justify-center flex-col gap-[2.5rem] mb-[-5.5rem]" action="" :state="formState" @submit.prevent="onFormSubmit">
                             <UFormGroup label="Email của bạn" name="email" class="w-[26rem] font-[Roboto] text-[1rem] relative">
                                 <UIcon name="i-heroicons-envelope-open-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
-                                <input type="email" class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" v-model="formState.email" required autocomplete="off">
+                                <input type="email" class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" v-model="formState.email" autocomplete="off">
                             </UFormGroup>
                             <UFormGroup label="Mật khẩu" name="password" class="w-[26rem] font-[Roboto] text-[1rem] relative">
                                 <UIcon name="i-heroicons-lock-closed-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
-                                <input :type="isPasswordVisible ? 'text' : 'password'" class="w-full h-[3rem] outline-none pl-10 pr-11 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" v-model="formState.password" required autocomplete="off">
+                                <input :type="isPasswordVisible ? 'text' : 'password'" class="w-full h-[3rem] outline-none pl-10 pr-11 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" v-model="formState.password" autocomplete="off">
                                 <UIcon :name="isPasswordVisible ? 'i-heroicons-eye-solid' : 'i-heroicons-eye-slash-solid'" class="absolute top-[.95rem] right-4 cursor-pointer" @click="togglePasswordVisibility"/>
                             </UFormGroup>
                             <div class="w-[26rem] flex items-center justify-between">
@@ -78,16 +78,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import { Icon } from '@iconify/vue';
-
-const formState = reactive({
-    email: '',
-    password: '',
-});
+import { useRouter } from 'vue-router';
+import authService from '~/services/AuthService';
+import { useUserStore } from '~/stores/User';
 
 useHead({
     title: 'Đăng Nhập',
+});
+
+const userStore = useUserStore();
+const router = useRouter();
+
+const formState = reactive({
+  email: '',
+  password: '',
 });
 
 const isPasswordVisible = ref(false);
@@ -100,15 +106,29 @@ const togglePasswordVisibility = (): void => {
 
 async function onFormSubmit() {
     if (!formState.email || !formState.password) {
-        // toast.add({
-        //     title: 'Lỗi',
-        //     description: 'Vui lòng nhập email và mật khẩu',
-        //     timeout: 2500
-        // });
+        toast.add({
+            title: 'Lỗi!',
+            icon: 'i-heroicons-no-symbol-solid',
+            color: 'red',
+            description: 'Vui lòng nhập email và mật khẩu!',
+            timeout: 2500
+        });
     } else {
-        
+        try {
+            const res = await authService.login(formState);
+            userStore.setUser({ name: res.userName });
+            router.push('/');
+        } catch (err) {
+            toast.add({
+                title: 'Đăng nhập thất bại!',
+                icon: 'i-heroicons-no-symbol-solid',
+                color: 'red',
+                description: (err as any).res?.data?.message || 'Đã có lỗi xảy ra, vui lòng thử lại sau!',
+                timeout: 3000
+            });
+        }
     }
-};
+}
 
 </script>
 
@@ -121,4 +141,4 @@ async function onFormSubmit() {
     }
 }
 
-</style>
+</style>~/services/AuthService
