@@ -42,7 +42,7 @@
                             </UFormGroup>
                             <UFormGroup label="Mật khẩu" name="password" class="w-[26rem] font-[Roboto] text-[1rem] relative">
                                 <UIcon name="i-heroicons-lock-closed-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
-                                <input :type="isPasswordVisible ? 'text' : 'password'" class="w-full h-[3rem] outline-none pl-10 pr-11 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" v-model="formState.password" autocomplete="off">
+                                <input :type="isPasswordVisible ? 'text' : 'password'" class="w-full h-[3rem] outline-none pl-10 pr-11 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" v-model="formState.password" autocomplete="off" />
                                 <UIcon :name="isPasswordVisible ? 'i-heroicons-eye-solid' : 'i-heroicons-eye-slash-solid'" class="absolute top-[.95rem] right-4 cursor-pointer" @click="togglePasswordVisibility"/>
                             </UFormGroup>
                             <div class="w-[26rem] flex items-center justify-between">
