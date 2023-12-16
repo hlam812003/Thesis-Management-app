@@ -19,6 +19,7 @@ db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', async function () {
   console.log('Connected to MongoDB');
   // Create admin users
+   
   const adminUsers = [
     {   
         _id: new mongoose.Types.ObjectId(),
@@ -30,7 +31,7 @@ db.once('open', async function () {
         university: mongoose.Types.ObjectId('6560d2e4c63d95490cf4e481'),
     },
   ];
- 
+  
   try {
     const savedAdminUsers = await User.create(adminUsers);
     console.log('Admin users added:', savedAdminUsers);
@@ -39,5 +40,5 @@ db.once('open', async function () {
   } finally {
     mongoose.connection.close();
   }
-
+  
 });
