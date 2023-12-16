@@ -4,7 +4,7 @@ interface StudentRequest {
     id: number;
 }
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'http://localhost:3001';
 
 const getStudentRequests = async (): Promise<StudentRequest[]> => {
     try {
