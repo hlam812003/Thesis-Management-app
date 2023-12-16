@@ -115,8 +115,10 @@ async function onFormSubmit() {
         });
     } else {
         try {
-            const userData = await authService.login(formState);
-            userStore.setUser({ name: userData.name, email: userData.email });
+            const res = await authService.login(formState);
+            userStore.setUser({ name: res.userName });
+            console.log("this is res " + res);
+            console.log("this is username " + res.userName);
             router.push('/');
         } catch (err) {
             toast.add({
