@@ -122,6 +122,7 @@ async function onFormSubmit(e: Event): Promise<void> {
         });
     } else {
         try {
+
             const userData = await authService.login(formState);
             const decodedToken = jwtDecode(userData.token) as JwtPayload;
 
@@ -140,6 +141,7 @@ async function onFormSubmit(e: Event): Promise<void> {
             } else {
                 router.push('/');
             }
+
         } catch (err) {
             toast.add({
                 title: 'Đăng nhập thất bại!',
