@@ -61,7 +61,7 @@
         <div class="lg:pt-[90px] md:pt-[130px] pt-[80px]" />
         <slot />
 
-        <!-- <Footer/> -->
+        <Footer />
     </div>
 </template>
 
