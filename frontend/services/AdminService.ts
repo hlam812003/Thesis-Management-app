@@ -2,12 +2,14 @@ import axios from "axios";
 
 const API_URL = 'http://localhost:3001';
 
-interface ExternalData {
-    email: string;
-    password: string;
-    name: string;
-    lastname: string;
-
+export interface ExternalData {
+  email: string;
+  password: string;
+  name: string;
+  lastname: string;
+  role?: string;
+  active?: boolean;
+  _id?: string;
 }
 
 const createExternal = async (externalData: ExternalData) => {
@@ -40,8 +42,17 @@ const getAllExternals = async (page = 1) => {
     }
 }
 
+const deleteExternal = async (id: string) => {
+  try {
+    const res = await axios.delete(`${API_URL}/delete_external/${id}`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
 
 export default {
     createExternal,
     getAllExternals,
+    deleteExternal,
 };

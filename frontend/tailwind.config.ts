@@ -35,6 +35,7 @@ export default <Partial<Config>> {
       }
     },
   },
+  // important: true,
   variants: {},
   plugins: [flowbitePlugin],
 }

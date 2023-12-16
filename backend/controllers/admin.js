@@ -53,7 +53,7 @@ exports.get_externals=(req,res,next) => {
     .then( result => {
             count=result
         External.find()
-        .select('email name lastname role active')
+        .select('_id email name lastname role active')
         .skip((perPage * page) - perPage)
         .limit(perPage)
         .exec()
