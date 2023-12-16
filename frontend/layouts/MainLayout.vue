@@ -1,5 +1,5 @@
 <template>
-    <div id="MainLayout">
+    <div id="MainLayout" class="relative">
         <!-- <div v-show="isLoading" class="fixed inset-0 z-[9999]">
             <Preloader />
         </div>         -->
