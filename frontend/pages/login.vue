@@ -81,13 +81,18 @@
 import { ref, reactive } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useRouter } from 'vue-router';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import authService from '~/services/AuthService';
 import { useUserStore } from '~/stores/User';
 
 useHead({
     title: 'Đăng Nhập',
 });
+
+interface JwtPayload {
+    name: string;
+    email: string;
+};
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -117,27 +122,25 @@ async function onFormSubmit(e: Event) {
         });
     } else {
         try {
-            const { data } = await authService.login(formState);
-            console.log(data);
-            if (data.token) {
-                const decodedToken = jwtDecode(data.token);
-                userStore.setUser({ name: decodedToken.name, email: decodedToken.email });
-                localStorage.setItem('token', data.token);
-                toast.add({
-                    title: 'Đăng nhập thành công!',
-                    icon: 'i-heroicons-check-circle-solid',
-                    color: 'green',
-                    description: `Chào mừng ${decodedToken.name} đã trở lại!`,
-                    timeout: 3000
-                });
-                router.push('/');
-            }
+            const userData = await authService.login(formState);
+            const decodedToken = jwtDecode(userData.token) as JwtPayload;
+
+            userStore.setUser({ name: decodedToken.name, email: decodedToken.email });
+
+            toast.add({
+                title: 'Đăng nhập thành công!',
+                icon: 'i-heroicons-check-circle-solid',
+                color: 'green',
+                description: `Chào mừng ${decodedToken.name} đã trở lại!`,
+                timeout: 3000
+            });
+            router.push('/');
         } catch (err) {
             toast.add({
                 title: 'Đăng nhập thất bại!',
                 icon: 'i-heroicons-no-symbol-solid',
                 color: 'red',
-                description: (err as any).userData?.data?.message || 'Đã có lỗi xảy ra, vui lòng thử lại sau!',
+                description: (err as any).data?.message || 'Đã có lỗi xảy ra, vui lòng thử lại sau!',
                 timeout: 3000
             });
         }

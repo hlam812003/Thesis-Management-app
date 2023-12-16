@@ -1,8 +1,6 @@
 import axios from "axios";
 
-
 const API_URL = 'http://localhost:3001';
-
 
 interface LoginData {
   email?: string;
