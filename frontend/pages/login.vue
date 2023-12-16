@@ -115,8 +115,8 @@ async function onFormSubmit() {
         });
     } else {
         try {
-            const res = await authService.login(formState);
-            userStore.setUser({ name: res.userName });
+            const userData = await authService.login(formState);
+            userStore.setUser({ name: userData.name, email: userData.email });
             router.push('/');
         } catch (err) {
             toast.add({
