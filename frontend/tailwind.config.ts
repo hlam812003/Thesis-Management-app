@@ -13,7 +13,8 @@ export default <Partial<Config>> {
     "./app.{js,ts,vue}",
     "./app.config.{js,ts}",
     "./error.{js,ts,vue}",
-    "./nuxt.config.{js,ts}"
+    "./nuxt.config.{js,ts}",
+    "./node_modules/flowbite/**/*.{js,ts}"
   ],
   fontFamily: {
     sans: ['Roboto', 'Inter', 'Noto Sans', 'Raleway', 'sans-serif'],
@@ -34,5 +35,5 @@ export default <Partial<Config>> {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [require('flowbite/plugin')],
 }

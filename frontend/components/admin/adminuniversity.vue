@@ -1,0 +1,7 @@
+<template>
+    <div class="w-3/4 p-4">
+      <div class="mt-4">
+        <h2>Update Area univer </h2>
+      </div>
+    </div>
+</template>
