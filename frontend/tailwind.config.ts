@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import flowbitePlugin from 'flowbite/plugin';
 
 export default <Partial<Config>> {
   content: [
@@ -35,5 +36,7 @@ export default <Partial<Config>> {
     },
   },
   variants: {},
-  plugins: [require('flowbite/plugin')],
+
+  plugins: [flowbitePlugin],
+
 }
