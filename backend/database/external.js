@@ -23,11 +23,11 @@ db.once('open', async function () {
     {   
         _id: new mongoose.Types.ObjectId(),
         email: 'admin@gmail.com',
-        password: 'admin', // You should hash the password in a real application
+        password: '$2b$10$qYXB1.TmYxZmN1Uy6O99..Iz0rjDjh88qkdLGOc8WyjtUgUOLKU4q', // You should hash the password in a real application
         name: 'Cao',
         lastname: 'Pham',
         role: 'Admin',
-        active: false,
+        active: true,
     },
   ];
  

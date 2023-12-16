@@ -31,7 +31,10 @@
                     </li>
                 </ul>
                 <div>
-                    <div v-if="!isLoggedIn" class="flex items-center gap-[.8rem]">
+                    <div v-if="isLoggedIn">
+                        <span>{{ userInfo?.name }}</span>
+                    </div>
+                    <div v-else class="flex items-center gap-[.8rem]">
                         <div
                             v-for="(button, index) in navButtons" 
                             :key="button.label"
@@ -50,9 +53,6 @@
                                 {{ button.label }}
                             </UButton>
                         </div>
-                    </div>
-                    <div v-else>
-                        <span>{{ userInfo?.name }}</span>
                     </div>
                 </div>
             </div>

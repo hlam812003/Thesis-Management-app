@@ -118,8 +118,14 @@ async function onFormSubmit() {
             const res = await authService.login(formState);
             userStore.setUser({ name: res.userName });
             console.log("this is res " + res);
-            console.log("this is username " + res.userName);
-            router.push('/');
+            console.log("this is role " + res.role);
+            if (res.role == "Admin") {
+                router.push('/admin');
+            }
+            else{
+                router.push('/');
+            }
+            
         } catch (err) {
             toast.add({
                 title: 'Đăng nhập thất bại!',
