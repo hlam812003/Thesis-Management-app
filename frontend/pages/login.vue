@@ -66,19 +66,13 @@
                 </div>
             </div>
             <div class="w-[36%] h-screen"
-            v-motion
-            :initial="{ opacity: 0 }"
-            :enter="{ opacity: 1, scale: 1 }"
-            :delay="10"
-            >
-              <NuxtImg src="/photo2.jpg" class="w-full h-full" />
+                v-motion
+                :initial="{ opacity: 0 }"
+                :enter="{ opacity: 1, scale: 1 }"
+                :delay="10"
+                >
+                <NuxtImg src="/photo2.jpg" class="w-full h-full" />
             </div>
-
-            
-                        <div>
-                          <button @click="callAdminApi">Call Admin API</button>
-                        </div>
-
         </section>
     </Body>
 </template>
@@ -87,7 +81,7 @@
 import { ref, reactive } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useRouter } from 'vue-router';
-import authService from '~/services/authService';
+import authService from '~/services/AuthService';
 import { useUserStore } from '~/stores/User';
 
 useHead({
@@ -147,4 +141,4 @@ async function onFormSubmit() {
     }
 }
 
-</style>~/services/AuthService
+</style>~/services/AuthService~/services/AuthService
