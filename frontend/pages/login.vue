@@ -110,7 +110,7 @@ const togglePasswordVisibility = (): void => {
   isPasswordVisible.value = !isPasswordVisible.value;
 };
 
-async function onFormSubmit(e: Event) {
+async function onFormSubmit(e: Event): Promise<void> {
     e.preventDefault();
     if (!formState.email || !formState.password) {
         toast.add({
@@ -134,7 +134,12 @@ async function onFormSubmit(e: Event) {
                 description: `Chào mừng ${decodedToken.name} đã trở lại!`,
                 timeout: 3000
             });
-            router.push('/');
+
+            if (userData.role == 'Admin') {
+                router.push('/admin');
+            } else {
+                router.push('/');
+            }
         } catch (err) {
             toast.add({
                 title: 'Đăng nhập thất bại!',

@@ -1,7 +1,7 @@
 <template>
     <Body>
         <MainLayout>
-            <Home></Home>
+            <Home />
         </MainLayout>
     </Body>
 </template>

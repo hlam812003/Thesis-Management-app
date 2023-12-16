@@ -1,12 +1,18 @@
 <template>
-    <div>
-        <h1>Hello Admin!</h1>
-    </div>
+    <Body>
+        <MainLayout>
+
+        </MainLayout>
+    </Body>
 </template>
+
   
-<script>
-export default {
-    name: 'AdminPage',
-};
+<script setup>
+import MainLayout from '~/layouts/MainLayout.vue';
+
+useHead({
+    title: 'Trang Admin',
+});
+
 </script>
   

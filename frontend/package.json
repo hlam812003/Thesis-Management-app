@@ -57,6 +57,7 @@
     "@vueuse/motion": "^2.0.0",
     "aos": "^2.3.4",
     "axios": "^1.6.2",
+    "flowbite": "^2.2.1",
     "gsap": "^3.12.3",
     "gsap-trial": "^3.12.3",
     "jwt-decode": "^4.0.0",
