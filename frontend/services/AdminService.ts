@@ -40,8 +40,18 @@ const getAllExternals = async (page = 1) => {
     }
 }
 
+const deleteExternal = async (id: string) => {
+  try {
+    const response = await axios.delete(`your_api_endpoint/delete_external/${id}`);
+    return response.data; // Assuming the server sends a response with a message property
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 export default {
     createExternal,
     getAllExternals,
+    deleteExternal,
 };
