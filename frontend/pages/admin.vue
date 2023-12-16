@@ -1,32 +1,3 @@
-<script>
-import adminuser from '~/components/admin/adminuser.vue';
-import adminuniversity from '~/components/admin/adminuniversity.vue';
-
-export default {
-  components: { adminuser, adminuniversity },
-}
-</script>
-
-<script setup>
-import MainLayout from '~/layouts/MainLayout.vue'; 
-import adminstart from '~/components/admin/adminstart.vue';
-import adminuser from '~/components/admin/adminuser.vue';
-import adminuniversity from '~/components/admin/adminuniversity.vue';
-
-const state = ref({
-  currentSection: 'adminuser', // Section mặc định được chọn
-});
-
-const changeSection = (section) => {
-  console.log(`Change section to: ${section}`);
-  state.value.currentSection = section;
-};
-
-useHead({
-    title: 'Admin',
-})
-</script>
-
 <template>
     <Body>
         <MainLayout>
@@ -46,6 +17,34 @@ useHead({
     </Body>
 </template>
 
+<script>
+import adminuser from '~/components/admin/adminuser.vue';
+import adminuniversity from '~/components/admin/adminuniversity.vue';
+import adminexternal from '~/components/admin/adminexternal.vue';
 
+export default {
+  components: { adminuser, adminuniversity, adminexternal },
+}
+</script>
+
+<script setup>
+import MainLayout from '~/layouts/MainLayout.vue'; 
+import adminexternal from '~/components/admin/adminexternal.vue';
+import adminuser from '~/components/admin/adminuser.vue';
+import adminuniversity from '~/components/admin/adminuniversity.vue';
+
+const state = ref({
+  currentSection: 'adminuser', // Section mặc định được chọn
+});
+
+const changeSection = (section) => {
+  console.log(`Change section to: ${section}`);
+  state.value.currentSection = section;
+};
+
+useHead({
+    title: 'Admin',
+})
+</script>
 
   
