@@ -1,6 +1,6 @@
 <template>
     <div class="custom__checkbox--container">
-        <input type="checkbox" name="remember" id="custom__checkbox" hidden />
+        <input type="checkbox" name="remember" id="custom__checkbox" />
         <label for="custom__checkbox" class="custom__checkbox--label">
           <span class="custom__checkbox--box"></span>
         </label>
@@ -8,6 +8,10 @@
 </template>
 
 <style scoped>
+input[type="checkbox"] {
+    display: none !important;
+}
+
 .custom__checkbox--container {
     display: inline-block;
     vertical-align: middle;

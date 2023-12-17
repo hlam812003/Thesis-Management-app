@@ -2,12 +2,14 @@ import axios from "axios";
 
 const API_URL = 'http://localhost:3001';
 
-interface ExternalData {
-    email: string;
-    password: string;
-    name: string;
-    lastname: string;
-
+export interface ExternalData {
+  email: string;
+  password: string;
+  name: string;
+  lastname: string;
+  role?: string;
+  active?: boolean;
+  _id?: string;
 }
 
 const createExternal = async (externalData: ExternalData) => {
@@ -95,6 +97,7 @@ const updateExternal = async (id: string) => {
     throw error;
   }
 };
+
 
 
 export default {

@@ -34,25 +34,25 @@
                             <div class="w-[26rem] flex items-center justify-between gap-12">
                                 <UFormGroup label="Họ của bạn" name="username" class="w-1/2 font-[Roboto] text-[1rem] relative">
                                     <UIcon name="i-heroicons-user-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
-                                    <input type="text" class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
+                                    <input type="text" class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-0 border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
                                 </UFormGroup>
                                 <UFormGroup label="Tên của bạn" name="username" class="w-1/2 font-[Roboto] text-[1rem] relative">
                                     <UIcon name="i-heroicons-user-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
-                                    <input type="text" class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
+                                    <input type="text" class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-0 border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
                                 </UFormGroup>
                             </div>
                             <UFormGroup label="Email đăng kí" name="email" class="w-[26rem] font-[Roboto] text-[1rem] relative">
                                 <UIcon name="i-heroicons-envelope-open-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
-                                <input type="email" class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
+                                <input type="email" class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-0 border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
                             </UFormGroup>
                             <UFormGroup label="Mật khẩu" name="password" class="w-[26rem] font-[Roboto] text-[1rem] relative">
                                 <UIcon name="i-heroicons-lock-closed-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
-                                <input :type="passwordVisibility.password ? 'text' : 'password'" class="w-full h-[3rem] outline-none pl-10 pr-11 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
+                                <input :type="passwordVisibility.password ? 'text' : 'password'" class="w-full h-[3rem] border-0 outline-none pl-10 pr-11 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
                                 <UIcon :name="passwordVisibility.password ? 'i-heroicons-eye-solid' : 'i-heroicons-eye-slash-solid'" class="absolute top-[.95rem] right-4 cursor-pointer" @click="togglePasswordVisibility('password')"/>
                             </UFormGroup>
                             <UFormGroup label="Xác nhận mật khẩu" name="confirmPassword" class="w-[26rem] font-[Roboto] text-[1rem] relative">
                                 <UIcon name="i-heroicons-lock-closed-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
-                                <input :type="passwordVisibility.confirmPassword ? 'text' : 'password'" class="w-full h-[3rem] outline-none pl-10 pr-11 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
+                                <input :type="passwordVisibility.confirmPassword ? 'text' : 'password'" class="w-full h-[3rem] outline-none pl-10 pr-11 bg-transparent border-0 border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" required autocomplete="off">
                                 <UIcon :name="passwordVisibility.confirmPassword ? 'i-heroicons-eye-solid' : 'i-heroicons-eye-slash-solid'" class="absolute top-[.95rem] right-4 cursor-pointer" @click="togglePasswordVisibility('confirmPassword')"/>
                             </UFormGroup>
                             <div class="w-[26rem] flex items-center justify-between">

@@ -1,9 +1,7 @@
 <template>
-    <div class="mt-4">
-        <h2 class="text-white">Update Area univer </h2>
-    </div>    
+    <div class="w-3/4 p-4">
+      <div class="mt-4">
+        <h2>Update Area univer </h2>
+      </div>
+    </div>
 </template>
-
-<script setup lang="ts">
-
-</script>
