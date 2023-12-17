@@ -147,7 +147,7 @@ const items = [
     slot: 'account',
     disabled: true
   }], [{
-    label: 'Thông Tin',
+    label: 'Tài Khoản',
     icon: 'i-heroicons-user-circle-solid'
   }], [{
     label: 'Đăng Xuất',
