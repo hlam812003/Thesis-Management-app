@@ -3,6 +3,7 @@
     <NuxtPage />
 
     <UNotifications />
+
   </div>
 </template>
 
@@ -19,7 +20,7 @@ useHead({
     }
   ],
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} - Cisco` : 'Unknown Page';
+    return titleChunk ? `${titleChunk} - Cisco` : 'Trang Không Tồn Tại';
   },
   bodyAttrs: {
     class: 'test'

@@ -32,7 +32,7 @@
                                 <UIcon name="i-heroicons-envelope-open-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
                                 <input
                                   :type="emailSent ? 'text' : 'email'"
-                                  class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light"
+                                  class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-0 border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light"
                                   v-model="emailInput"
                                   required
                                   autocomplete="off"

@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 import flowbitePlugin from 'flowbite/plugin';
 
 export default <Partial<Config>> {
@@ -32,6 +32,9 @@ export default <Partial<Config>> {
       },
       animation: {
         bounceSlow: 'bounceSlow 3s linear infinite',
+      },
+      boxShadow: {
+        'unset': 'none'
       }
     },
   },

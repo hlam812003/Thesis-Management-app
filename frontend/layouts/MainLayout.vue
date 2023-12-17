@@ -32,7 +32,26 @@
                 </ul>
                 <div>
                     <div v-if="isLoggedIn">
-                        <span>{{ userInfo?.name }}</span>
+                        <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' } }" :popper="{ placement: 'bottom-start' }">
+                            <UAvatar src="https://img.freepik.com/premium-vector/student-avatar-illustration-user-profile-icon-youth-avatar_118339-4401.jpg?w=2000" size="sm"/>
+                        
+                            <template #account="{ item }">
+                              <div class="text-left">
+                                <p>
+                                  Đăng nhập với
+                                </p>
+                                <p class="truncate font-medium text-gray-900 dark:text-white">
+                                  {{ item.label }}
+                                </p>
+                              </div>
+                            </template>
+                        
+                            <template #item="{ item }">
+                              <span class="truncate">{{ item.label }}</span>
+                        
+                              <UIcon :name="item.icon" class="flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto" />
+                            </template>
+                        </UDropdown>
                     </div>
                     <div v-else class="flex items-center gap-[.8rem]">
                         <div
@@ -68,7 +87,7 @@
 <script setup lang="ts">
 import { type Ref, ref, watch, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { useUserStore } from '~/stores/User';
+import { useUserStore, type UserInfo } from '~/stores/User';
 
 interface NavItem {
     label: string;
@@ -86,7 +105,7 @@ interface NavButton {
 
 const userStore = useUserStore();
 const isLoggedIn = computed(() => userStore.isLoggedIn);
-const userInfo = computed(() => userStore.userInfo);
+const userInfo: ComputedRef<UserInfo | null> = computed(() => userStore.userInfo);
 
 const navItems: Ref<NavItem[]> = ref([
     {
@@ -94,8 +113,8 @@ const navItems: Ref<NavItem[]> = ref([
         link: '/', 
     },
     {
-        label: 'Luận Án', 
-        link: '/thesis', 
+        label: 'Luận Văn', 
+        link: '/thesis/[id]', 
     },
     { 
         label: 'Sinh Viên', 
@@ -121,6 +140,20 @@ const navButtons: Ref<NavButton[]> = ref([
         ui: { rounded: 'rounded-full' }
     }
 ]);
+
+const items = [
+  [{
+    label: userInfo.value?.email || 'Khách',
+    slot: 'account',
+    disabled: true
+  }], [{
+    label: 'Thông Tin',
+    icon: 'i-heroicons-user-circle-solid'
+  }], [{
+    label: 'Đăng Xuất',
+    icon: 'i-heroicons-arrow-left-on-rectangle'
+  }]
+]
 
 const router = useRouter();
 
