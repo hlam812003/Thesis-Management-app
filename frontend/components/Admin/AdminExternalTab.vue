@@ -83,11 +83,18 @@
   </div>
       <button @click="deleteUser" class="px-4 py-2 bg-red-500 text-white rounded-md">Delete User</button>
   </div>
+
+  <div class="flex">
+     <component :is="ExternalCURD" />
+  </div>
+  
 </template>
 
 <script setup lang="ts">
+
 import { ref, onMounted } from 'vue';
 import adminService, { type ExternalData } from '~/services/AdminService';
+import ExternalCURD from '~/components/admin/ExternalCRUD/ExternalCRUDTab.vue';
 
 const externalData = ref<ExternalData>({
   email: '',
@@ -97,52 +104,56 @@ const externalData = ref<ExternalData>({
 });
 
 const createExternal = async () => {
-console.log("adminService type: ", typeof adminService);
-console.log("this is adminservice " + adminService); // Log the adminService object
-try {
-  const response = await adminService.createExternal(externalData.value);
-  console.log(response);
-  if (response.email && response.name && response.lastname && response.role && response.active && response._id) {
-    alert('External user created successfully!');
-  } else {
-    alert('Some user details are missing.');
+  console.log("adminService type: ", typeof adminService);
+  console.log("this is adminservice " + adminService); // Log the adminService object
+  try {
+    const response = await adminService.createExternal(externalData.value);
+    console.log(response);
+    if (response.email && response.name && response.lastname && response.role && response.active && response._id) {
+      alert('External user created successfully!');
+    } else {
+      alert('Some user details are missing.');
+    }
+  } catch (error) {
+    console.error(error);
+    alert('Error creating external user. Please try again.');
   }
-} catch (error) {
-  console.error(error);
-  alert('Error creating external user. Please try again.');
-}
+};
 
-const Allexternals = ref({ docs: [] , count: 0, pages: 0});
-const currentPage = ref(1);
-const fetchData = async (page: number, decrement = false) => {
-try {
-  const data = await adminService.getAllExternals(page);
-  Allexternals.value = data;
-  console.log("cr page: ", currentPage.value);
-  if (decrement && currentPage.value > 1) {
-    currentPage.value--;
-  } else {
-    currentPage.value++;
+  const Allexternals = ref({ docs: [] , count: 0, pages: 0});
+  const currentPage = ref(1);
+  const fetchData = async (page: number, decrement = false) => {
+  try {
+    const data = await adminService.getAllExternals(page);
+    
+    if (decrement && currentPage.value > 1) {
+      currentPage.value--;
+    }
+    if (!decrement && currentPage.value < Allexternals.value.pages) {
+      currentPage.value++;
+    }
+    Allexternals.value = data;
+    console.log("cr page: ", currentPage.value);
+  } catch (error) {
+    console.error(error);
   }
-} catch (error) {
-  console.error(error);
-}
 };
-const userId = ref('');
-const deleteUser = async () => {
-  console.log('User deleted id value ' + userId.value);
-try {
-  await adminService.deleteExternal(userId.value);
-  console.log('User deleted id value ' + userId.value);
-  // Optionally, you can perform additional actions after deletion.
-  console.log('User deleted successfully.');
-  alert('User deleted successfully!');
-} catch (error) {
-  console.error('Error deleting user:', error);
-  alert('Error deleting user!');
-}
-};
-onMounted(() => {
-fetchData(currentPage.value);
-});
+
+  const userId = ref('');
+  const deleteUser = async () => {
+    console.log('User deleted id value ' + userId.value);
+  try {
+    await adminService.deleteExternal(userId.value);
+    console.log('User deleted id value ' + userId.value);
+    // Optionally, you can perform additional actions after deletion.
+    console.log('User deleted successfully.');
+    alert('User deleted successfully!');
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    alert('Error deleting user!');
+  }
+  };
+  onMounted(() => {
+    fetchData(currentPage.value);
+  });
 </script>
