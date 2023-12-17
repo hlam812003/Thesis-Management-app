@@ -71,9 +71,9 @@
   </div>
 
   <!-- delete external User -->
-  <div class="flex items-center">
+  <div class="flex items-center space-x-4 space-y-1">
     <div class="mb-4">
-      <label for="userId" class="block text-sm font-medium text-gray-700">User ID:</label>
+      <label for="userId" class="block text-sm font-medium text-green-700">User ID:</label>
       <input
         v-model="userId"
         type="text"
@@ -82,7 +82,7 @@
         class="mt-1 p-2 border border-gray-300 rounded-md text-green-500 w-full"
       />
     </div>
-        <button @click="deleteUser" class="px-4 py-2 bg-red-500 text-white rounded-md">Delete User</button>
+        <button @click="deleteUser" class="px-4 py-2 bg-red-500 text-white rounded-md   ">Delete User</button>
     </div>
 </template>
 
@@ -118,13 +118,15 @@ const currentPage = ref(1);
 const fetchData = async (page: number, decrement = false) => {
   try {
     const data = await adminService.getAllExternals(page);
-    Allexternals.value = data;
-    console.log("cr page: ", currentPage.value);
+    
     if (decrement && currentPage.value > 1) {
       currentPage.value--;
-    } else {
+    } 
+    if (!decrement && currentPage.value < Allexternals.value.pages) {
       currentPage.value++;
     }
+    Allexternals.value = data;
+    console.log("cr page: ", currentPage.value);
   } catch (error) {
     console.error(error);
   }
