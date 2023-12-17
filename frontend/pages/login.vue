@@ -98,8 +98,8 @@ const userStore = useUserStore();
 const router = useRouter();
 
 const formState = reactive({
-  email: '',
-  password: '',
+  email: undefined || '',
+  password: undefined || '',
 });
 
 const isPasswordVisible = ref(false);
