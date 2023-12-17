@@ -35,7 +35,7 @@
                             <span class="w-full font-[Roboto] text-center font-light text-[.85rem]">Hoặc đăng nhập với</span>
                             <span class="w-full h-[.05rem] bg-[#ffffffc0]"></span>
                         </div>
-                        <UForm class="w-full h-full flex items-center justify-center flex-col gap-[2.5rem] mb-[-5.5rem]" action="" :state="formState" @submit.prevent="onFormSubmit">
+                        <UForm class="w-full h-full flex items-center justify-center flex-col gap-[2.5rem] mb-[-5.5rem]" action="" :state="formState" @submit="onFormSubmit">
                             <UFormGroup label="Email của bạn" name="email" class="w-[26rem] font-[Roboto] text-[1rem] relative">
                                 <UIcon name="i-heroicons-envelope-open-solid" class="absolute top-[.85rem] left-3 text-[1.1rem]"/>
                                 <input type="email" class="w-full h-[3rem] outline-none pl-10 pr-4 bg-transparent border-b-[1px] border-b-[#ffffffc0] transition-all focus:border-b-[rgb(0,220,130)] text-[1.05rem] font-light" v-model="formState.email" autocomplete="off">
@@ -81,12 +81,18 @@
 import { ref, reactive } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useRouter } from 'vue-router';
+import { jwtDecode } from 'jwt-decode';
 import authService from '~/services/AuthService';
 import { useUserStore } from '~/stores/User';
 
 useHead({
     title: 'Đăng Nhập',
 });
+
+interface JwtPayload {
+    name: string;
+    email: string;
+};
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -104,7 +110,8 @@ const togglePasswordVisibility = (): void => {
   isPasswordVisible.value = !isPasswordVisible.value;
 };
 
-async function onFormSubmit() {
+async function onFormSubmit(e: Event): Promise<void> {
+    e.preventDefault();
     if (!formState.email || !formState.password) {
         toast.add({
             title: 'Lỗi!',
@@ -115,23 +122,32 @@ async function onFormSubmit() {
         });
     } else {
         try {
-            const res = await authService.login(formState);
-            userStore.setUser({ name: res.userName });
-            console.log("this is res " + res);
-            console.log("this is role " + res.role);
-            if (res.role == "Admin") {
+
+            const userData = await authService.login(formState);
+            const decodedToken = jwtDecode(userData.token) as JwtPayload;
+
+            userStore.setUser({ name: decodedToken.name, email: decodedToken.email });
+
+            toast.add({
+                title: 'Đăng nhập thành công!',
+                icon: 'i-heroicons-check-circle-solid',
+                color: 'green',
+                description: `Chào mừng ${decodedToken.name} đã trở lại!`,
+                timeout: 3000
+            });
+
+            if (userData.role == 'Admin') {
                 router.push('/admin');
-            }
-            else{
+            } else {
                 router.push('/');
             }
-            
+
         } catch (err) {
             toast.add({
                 title: 'Đăng nhập thất bại!',
                 icon: 'i-heroicons-no-symbol-solid',
                 color: 'red',
-                description: (err as any).res?.data?.message || 'Đã có lỗi xảy ra, vui lòng thử lại sau!',
+                description: (err as any).data?.message || 'Đã có lỗi xảy ra, vui lòng thử lại sau!',
                 timeout: 3000
             });
         }
@@ -149,4 +165,4 @@ async function onFormSubmit() {
     }
 }
 
-</style>~/services/AuthService~/services/AuthService
+</style>
