@@ -57,7 +57,7 @@ const deleteExternal = async (id: string) => {
 const getAllExternal_notActive = async (page = 1) => {
   try {
     const token = localStorage.getItem('token');
-    const response = await axios.delete(`${API_URL}/admin/get_not_active_externals?page=${page}`,{
+    const response = await axios.get(`${API_URL}/admin/get_not_active_externals?page=${page}`,{
       headers: {
           Authorization: `Bearer ${token}`,
       },

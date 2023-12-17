@@ -84,12 +84,19 @@
     </div>
         <button @click="deleteUser" class="px-4 py-2 bg-red-500 text-white rounded-md   ">Delete User</button>
     </div>
+
+    <!-- CURD external User -->
+    <div class="flex items-center p-4">
+        <component :is="ExternalCURD" />
+    </div>
+
 </template>
 
 <script setup lang="ts">
+
 import { ref, onMounted } from 'vue';
 import adminService from '~/services/AdminService';
-
+import ExternalCURD from '~/components/admin/ExternalCURD/ExternalCURDTab.vue';
 const externalData = ref({
   email: '',
   password: '',
