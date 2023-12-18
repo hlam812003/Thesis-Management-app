@@ -246,33 +246,3 @@ exports.get_byId = (req, res, next) => {
         });
       });
   };
-
-  exports.getThesisImgUrlById = (req, res, next) => {
-    const thesisId = req.params.id;
-
-    Thesis.findById(thesisId)
-        .select('imgUrl')
-        .exec()
-        .then(thesis => {
-            if (thesis) {
-                res.status(200).json({ imgUrl: thesis.imgUrl });
-            } else {
-                res.status(404).json({ message: 'Thesis not found' });
-            }
-        })
-        .catch(err => {
-            res.status(500).json({ error: err });
-        });
-};
-
-exports.getAllThesisImgUrls = (req, res, next) => {
-    Thesis.find({}, 'imgUrl')
-        .exec()
-        .then(theses => {
-            const imgUrls = theses.map(thesis => thesis.imgUrl);
-            res.status(200).json({ imgUrls });
-        })
-        .catch(err => {
-            res.status(500).json({ error: err });
-        });
-};
