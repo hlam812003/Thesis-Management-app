@@ -57,7 +57,20 @@
                             </template>
                   
                             <UForm @submit="">
-                                <input type="text" class="w-full h-[3rem] outline-none bg-transparent border-0 text-[1.05rem] font-light" placeholder="Tên luận văn bạn cần tìm...">
+                                <UInput type="text" size="xl" variant="none" color="white" class="w-full h-[2.5rem] text-[1.05rem] font-light"
+                                    autocomplete="off" v-model="q" name="q" :ui="{  placeholder:  'text-[1.05rem] placeholder-zinc-400 dark:placeholder-stone-300', icon: { trailing: { pointer: '' } } }" placeholder="Tên luận văn bạn cần tìm..." > 
+                                
+                                    <template #trailing>
+                                        <UButton
+                                            v-show="q !== ''"
+                                            color="gray"
+                                            variant="link"
+                                            icon="i-heroicons-x-mark-20-solid"
+                                            :padded="false"
+                                            @click="q = ''"
+                                        />
+                                    </template>
+                                </UInput>
                             </UForm>
                         </UCard>
                     </UModal>
@@ -139,6 +152,7 @@ const isLoggedIn = computed(() => userStore.isLoggedIn);
 const userInfo: ComputedRef<UserInfo | null> = computed(() => userStore.userInfo);
 
 const isOpen: Ref<boolean> = ref(false);
+const q: Ref<string> = ref('');
 
 const navItems: Ref<NavItem[]> = ref([
     {
@@ -147,7 +161,7 @@ const navItems: Ref<NavItem[]> = ref([
     },
     {
         label: 'Luận Văn', 
-        link: '/thesis/[id]', 
+        link: '/thesis', 
     },
     { 
         label: 'Sinh Viên', 

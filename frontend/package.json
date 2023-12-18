@@ -64,6 +64,7 @@
     "nuxt-property-decorator": "^2.9.1",
     "pinia": "^2.1.7",
     "smooth-scrollbar": "^8.8.4",
+    "swiper": "^11.0.5",
     "three": "^0.157.0",
     "vue-simple-scrollbar": "^0.1.8",
     "vue-smoothie": "^1.2.0",
