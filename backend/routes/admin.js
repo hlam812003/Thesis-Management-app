@@ -29,8 +29,4 @@ router.post("/application_period",adminController.application_period); // specif
 router.post("/create_university",adminController.create_university) // create university
 router.delete("/delete_university/:universityId",adminController.delete_university) //delete university
 
-//router.get("/completed", adminController.thesis_completed_get_all); // 
- 
-
-
 module.exports = router;
