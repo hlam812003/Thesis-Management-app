@@ -98,7 +98,19 @@ const updateExternal = async (id: string, role:string) => {
   }
 };
 
-
+const Test = async () => {
+  try {
+    
+    const response = await axios.get(`${API_URL}/thesis/658041bc74ad9d2de4f633e7`,{
+      headers: {
+          
+      },
+  });
+    return response.data; // Assuming the server sends a response with a message property
+  } catch (error) {
+    throw error;
+  }
+};
 
 export default {
     createExternal,
@@ -107,4 +119,5 @@ export default {
     getAllExternal_notActive,
     activeExternal,
     updateExternal,
+    Test,
 };

@@ -9,7 +9,7 @@ const thesisSchema = mongoose.Schema({
     description: String,
     prerequisites: String,
     tags: [String],
-    created_time: Date,
+    created_time: Date,    
     file: [{type: mongoose.Schema.Types.ObjectId, ref:'FileThesis'}],
     assigned: Boolean, // true if it is assigned to some student
     university: { type: mongoose.Schema.Types.ObjectId, ref: 'University'},
@@ -17,6 +17,7 @@ const thesisSchema = mongoose.Schema({
     pending: Boolean, // external,student wait for approval from professor. 
     creator_student: { type: mongoose.Schema.Types.ObjectId, ref:'User' },
     creator_external:{ type: mongoose.Schema.Types.ObjectId, ref:'External'},
+    images: Buffer, // to store image 
     });
 
     

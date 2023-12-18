@@ -17,5 +17,6 @@ router.get("/completed/data/:fileId",thesisController.thesis_completed_data_file
 
 
 router.get("/:thesisId",thesisController.get_byId)  //get thesis by id
-
+router.get("/renderImage",thesisController.getThesisImgUrlById)  //get image file by id
+router.get("/renderFile",thesisController.getAllThesisImgUrls)  //get file by id
 module.exports = router;
