@@ -73,7 +73,7 @@ const getAllExternal_notActive = async (page = 1) => {
 const activeExternal = async (id: string) => {
   try {
     const token = localStorage.getItem('token');
-    const response = await axios.delete(`${API_URL}/admin/activate_external/${id}`,{
+    const response = await axios.get(`${API_URL}/admin/activate_external/${id}`,{
       headers: {
           Authorization: `Bearer ${token}`,
       },
@@ -84,10 +84,10 @@ const activeExternal = async (id: string) => {
   }
 };
 
-const updateExternal = async (id: string) => {
+const updateExternal = async (id: string, role:string) => {
   try {
     const token = localStorage.getItem('token');
-    const response = await axios.delete(`${API_URL}/admin/update_external/${id}`,{
+    const response = await axios.put(`${API_URL}/admin/update_external/${id}`,{ role },{
       headers: {
           Authorization: `Bearer ${token}`,
       },

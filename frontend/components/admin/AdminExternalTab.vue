@@ -84,7 +84,7 @@
       <button @click="deleteUser" class="px-4 py-2 bg-red-500 text-white rounded-md">Delete User</button>
   </div>
 
-  <div class="flex">
+  <div class="">
      <component :is="ExternalCURD" />
   </div>
   

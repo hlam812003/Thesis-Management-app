@@ -48,7 +48,35 @@
             </div>
         </div>
     </div>  
-  </template>
+    
+    <div class="flex flex-col space-y-6 ">
+      <div class="grid grid-cols-2 gap-4 ">
+        <!-- active -->
+        <div class="mb-4 flex">
+          <label for="userIdAU" class="flex text-green-500 items-start ">User ID:</label>
+          <input v-model="userIdAU" type="text" id="userIdAU" class="w-full mt-2 p-2 border border-gray-300 rounded mt-4 text-green-500" />
+        </div>
+
+        <!-- update role -->
+        <div class="mb-4 flex">
+          <label for="role" class="flex text-green-500 items-start">Select Role:</label>
+          <select v-model="selectedRole" id="role" class="mt-2 p-2 border border-gray-300 rounded mt-4 text-green-500">
+            <option value="Guest">Guest</option>
+            <option value="Admin">Admin</option>
+            <option value="Professor">Professor</option>
+            <option value="Student">Student</option>
+            <option value="Secretariat">Secretariat</option>
+          </select>
+        </div>
+      </div>
+      <button @click="activateUser" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300">Activate User</button>
+      <button @click="updateRole" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">Update Role</button>
+
+      <div v-if="AUMessage" class="mt-4 text-green-500">
+        {{ AUMessage }}
+      </div>
+  </div>
+</template>
  
 <script setup lang="ts">
 
@@ -73,6 +101,39 @@ const fetchData = async (page: number, decrement = false) => {
     console.error(error);
   }
 };
+
+const userIdAU = ref('');
+const AUMessage = ref('');
+const activateUser = async () => {
+  try {
+    const result = await adminService.activeExternal(userIdAU.value);
+    console.log(result); // Log the server response if needed
+
+    // Set the activation message based on the server response
+    AUMessage.value = result.message || 'External user activated successfully';
+  } catch (error) {
+    console.error('Error activating user:', error);
+    // Handle error, show a message, etc.
+    AUMessage.value = 'Error activating external user';
+  }
+};
+
+
+const selectedRole = ref(''); // Holds the selected role
+const updateRole = async () => {
+  try {
+    const result = await adminService.updateExternal(userIdAU.value, selectedRole.value);
+    console.log(result); // Log the server response if needed
+
+    // Set the update message based on the server response
+    AUMessage.value = result.message || 'Role updated successfully';
+  } catch (error) {
+    console.error('Error updating role:', error);
+    // Handle error, show a message, etc.
+    AUMessage.value = 'Error updating role';
+  }
+};
+
 
 onMounted(() => {
   fetchData(currentPage.value);
