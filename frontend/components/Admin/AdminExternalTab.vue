@@ -72,12 +72,12 @@
 <!-- delete external User -->
 <div class="flex items-center">
   <div class="mb-4">
-    <label for="userId" class="block text-sm font-medium text-gray-700">User ID:</label>
+    <label for="externald" class="block text-sm font-medium text-gray-700">User ID:</label>
     <input
-      v-model="userId"
+      v-model="externald"
       type="text"
-      id="userId"
-      name="userId"
+      id="externald"
+      name="externald"
       class="mt-1 p-2 border border-gray-300 rounded-md text-green-500 w-full"
     />
   </div>
@@ -139,12 +139,12 @@ const createExternal = async () => {
   }
 };
 
-  const userId = ref('');
+  const externald = ref('');
   const deleteUser = async () => {
-    console.log('User deleted id value ' + userId.value);
+    console.log('User deleted id value ' + externald.value);
   try {
-    await adminService.deleteExternal(userId.value);
-    console.log('User deleted id value ' + userId.value);
+    await adminService.deleteExternal(externald.value);
+    console.log('User deleted id value ' + externald.value);
     // Optionally, you can perform additional actions after deletion.
     console.log('User deleted successfully.');
     alert('User deleted successfully!');

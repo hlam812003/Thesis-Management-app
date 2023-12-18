@@ -187,7 +187,7 @@ exports.get_users=(req,res,next) => {
         count=result
         User.find()
         .populate('university')
-        .select("email role university name lastname") // chọn các trường cần lấy
+        .select("_id email role university name lastname") // chọn các trường cần lấy
         .skip((perPage * page) - perPage) // thực hiện phân trang 
         .limit(perPage)
         .exec()
