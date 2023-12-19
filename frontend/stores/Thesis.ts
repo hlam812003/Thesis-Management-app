@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import ThesisService from '@/services/ThesisService';
 
 export interface ThesisInfo {
-    _id?: string;
+    _id?: number;
     title: string;
     description: string;
     prerequisites?: string;
@@ -10,6 +10,8 @@ export interface ThesisInfo {
     file?: string;
     professor?: string;
     created_time?: Date;
+    image?: string;
+    views?: number;
 }
 
 export const useThesisStore = defineStore('thesis', {
@@ -20,7 +22,7 @@ export const useThesisStore = defineStore('thesis', {
         completedThesisFile: {} as ThesisInfo,
     }),
     getters: {
-        // Add getters if needed
+        
     },
     actions: {
         async fetchTheses() {
