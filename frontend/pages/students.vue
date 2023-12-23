@@ -1,7 +1,7 @@
 <template>
     <Body>
         <MainLayout>
-            <section class="w-full h-[320px]">
+            <section class="w-full h-screen">
                 
             </section>
         </MainLayout>

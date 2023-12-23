@@ -7,6 +7,14 @@ interface LoginData {
   password?: string;
 }
 
+export interface RegisterData {
+  email?: string;
+  password?: string;
+  lastName?: string;
+  firstName?: string;
+  confirmPassword?: string;
+}
+
 const login = async (loginData: LoginData) => {
     try {
         const res = await axios.post(`${API_URL}/external/login`, loginData);
@@ -17,6 +25,16 @@ const login = async (loginData: LoginData) => {
     }
 };
 
+const register = async (userData: RegisterData) => {
+  try {
+      const res = await axios.post(`${API_URL}/external/signup`, userData);
+      return res.data;
+  } catch (err) {
+      throw err;
+  }
+};
+
 export default {
-  login
+  login,
+  register
 };
